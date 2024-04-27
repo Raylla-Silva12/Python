@@ -1,0 +1,45 @@
+import turtle
+import math
+
+def jump(t, x, y):
+    # Mova a tartaruga para a posição (x, y) sem desenhar
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+
+def draw_circle(t, x, y, radius, color):
+    # Mova para a posição inicial do círculo
+    jump(t, x + radius, y)
+    # Desenhe o círculo
+    t.color(color)
+    t.circle(radius)
+
+def olimpiadas(t):
+    t.speed(0)  # Defina a velocidade da tartaruga para o máximo
+    t.pensize(6)  # Defina a espessura da linha
+
+    # Lista de cores para os anéis olímpicos
+    cores = ['blue', 'black', 'red', 'yellow', 'green']
+
+    # Lista de coordenadas e tamanhos dos círculos
+    circulos = [
+        (0, 0, 60),
+        (-120, 0, 60),
+        (60, 60, 60),
+        (-60, 60, 60),
+        (-180, 60, 60)
+    ]
+
+    # Desenha cada círculo com sua respectiva cor
+    for i, (x, y, raio) in enumerate(circulos):
+        draw_circle(t, x, y, raio, cores[i])
+
+# Inicialize a tela e a tartaruga
+s = turtle.Screen()
+t = turtle.Turtle()
+
+# Desenhe os anéis olímpicos
+olimpiadas(t)
+
+# Mantenha a janela aberta até que o usuário a feche
+s.mainloop()
